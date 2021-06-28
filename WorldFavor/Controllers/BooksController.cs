@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorldFavor.Contracts.Dtos;
-using WorldFavor.Contracts.Entities;
+using WorldFavor.Mappers;
 using WorldFavor.Persistence.DbContext;
 
 namespace WorldFavor.Controllers
@@ -29,31 +31,31 @@ namespace WorldFavor.Controllers
 
             return Ok(book.Map());
         }
-    }
 
-    public static class BookMapper
-    {
-        public static Book Map(this BookEntity entity)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Book>>> GetAll()
         {
-            return new Book
-            {
-                Checkout = entity.Checkout,
-                ISBN = entity.ISBN,
-                IsLost = entity.IsLost,
-                Title = entity.Title
-            };
+            var books = await _dbContext.Books
+                .Include(x => x.Reader)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return Ok(books.Select(x => x.Map()));
         }
-    }
 
-    public static class ReaderMapper
-    {
-        public static Reader Map(this ReaderEntity entity)
+        [HttpPost]
+        public async Task<ActionResult> Post([FromBody] Book book)
         {
-            return new Reader
+            var bookExist = await _dbContext.Books.FirstOrDefaultAsync(x => x.ISBN == book.ISBN);
+            if (bookExist != null)
             {
-                Name = entity.Name,
-                Birth = entity.Birth
-            };
+                return BadRequest("Book already exist, ISBN should be unique");
+            }
+
+            await _dbContext.Books.AddAsync(book.Map());
+            await _dbContext.SaveChangesAsync();
+
+            return StatusCode(201);
         }
     }
 }
