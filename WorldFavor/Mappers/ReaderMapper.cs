@@ -13,7 +13,18 @@ namespace WorldFavor.Mappers
                     Name = entity.Name,
                     Birth = entity.Birth
                 }
-                : new Reader();
+                : null;
+        }
+
+        public static ReaderEntity Map(this Reader entity)
+        {
+            return entity != null
+                ? new ReaderEntity
+                {
+                    Name = entity.Name,
+                    Birth = entity.Birth
+                }
+                : null;
         }
     }
 }

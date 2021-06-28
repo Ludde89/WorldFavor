@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
@@ -11,8 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WorldFavor.Contracts.Dtos;
-using WorldFavor.Contracts.Entities;
 using WorldFavor.Persistence.DbContext;
+using WorldFavor.Tests.MockData;
 
 namespace WorldFavor.Tests
 {
@@ -23,8 +21,13 @@ namespace WorldFavor.Tests
         [TestInitialize]
         public async Task Run()
         {
+            Arrange();
             SetUpDependencies();
             await Act();
+        }
+
+        protected virtual void Arrange()
+        {
         }
 
         private void SetUpDependencies()
@@ -69,50 +72,15 @@ namespace WorldFavor.Tests
             var readerEntities = DataHelper.GetReaders();
             context.Readers.AddRange(readerEntities);
 
+            SeedDatabase(context);
             context.SaveChanges();
         }
 
         public DbContextOptionsBuilder<WorldFavorDbContext> ContextOptionsBuilder { get; set; }
 
         protected virtual void SetUpDependencies(IServiceCollection services) { }
+        protected virtual void SeedDatabase(WorldFavorDbContext context) { }
 
         protected abstract Task Act();
-    }
-
-    public static class DataHelper
-    {
-        private static List<BookEntity> _books = new List<BookEntity>();
-        private static List<ReaderEntity> _readers = new List<ReaderEntity>();
-        public static IEnumerable<BookEntity> GetBooks()
-        {
-            if (!_books.Any())
-            {
-                _books.AddRange(Enumerable.Range(0, 5).Select(x => new BookEntity
-                {
-                    Checkout = DateTime.Now,
-                    ISBN = $"foo{x}",
-                    Id = x,
-                    IsLost = false,
-                    Title = $"bar{x}"
-                }));
-            }
-
-            return _books;
-        }
-
-        public static IEnumerable<ReaderEntity> GetReaders()
-        {
-            if (!_readers.Any())
-            {
-                _readers.AddRange(Enumerable.Range(0, 5).Select(x => new ReaderEntity
-                {
-                  Id = x,
-                  Name = $"foobar{x}",
-                  Birth = DateTime.Now.AddDays(-x)
-                }));
-            }
-
-            return _readers;
-        }
     }
 }

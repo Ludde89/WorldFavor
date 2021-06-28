@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorldFavor.Contracts.Dtos;
+using WorldFavor.Contracts.Entities;
 using WorldFavor.Mappers;
 using WorldFavor.Persistence.DbContext;
 
@@ -56,6 +57,27 @@ namespace WorldFavor.Controllers
             await _dbContext.SaveChangesAsync();
 
             return StatusCode(201);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Put([FromBody] Book book)
+        {
+            var bookEntity = await _dbContext.Books.FirstOrDefaultAsync(x => x.ISBN == book.ISBN);
+
+            UpdateProperties(bookEntity, book);
+
+            var entityEntry = _dbContext.Books.Update(bookEntity);
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(entityEntry.Entity.Map());
+        }
+
+        private void UpdateProperties(BookEntity bookExist, Book book)
+        {
+            bookExist.Checkout = book.Checkout;
+            bookExist.Title = book.Title;
+            bookExist.Title = book.Title;
+            bookExist.Reader = book.Reader.Map();
         }
     }
 }

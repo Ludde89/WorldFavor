@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using WorldFavor.Contracts.Dtos;
 using WorldFavor.Contracts.Entities;
+using WorldFavor.Tests.MockData;
 
 namespace WorldFavor.Tests.Controllers
 {

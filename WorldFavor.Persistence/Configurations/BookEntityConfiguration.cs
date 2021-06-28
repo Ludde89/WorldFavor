@@ -11,7 +11,7 @@ namespace WorldFavor.Persistence.Configurations
             builder
                 .HasOne<ReaderEntity>(x => x.Reader);
 
-            builder.HasKey(x => x.Title);
+            builder.HasKey(x => x.ISBN);
 
         }
     }

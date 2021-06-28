@@ -15,7 +15,7 @@ namespace WorldFavor.Mappers
                     IsLost = entity.IsLost,
                     Title = entity.Title
                 }
-                : new Book();
+                : null;
         }
 
         public static BookEntity Map(this Book book)
@@ -28,7 +28,7 @@ namespace WorldFavor.Mappers
                     IsLost = book.IsLost,
                     Title = book.Title
                 }
-                : new BookEntity();
+                : null;
         }
     }
 }
