@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WorldFavor.Contracts\WorldFavor.Contracts.csproj" />
     <ProjectReference Include="..\WorldFavor\WorldFavor.csproj" />
   </ItemGroup>
 

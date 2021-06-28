@@ -1,0 +1,8 @@
+D:\git\WorldFavor\WorldFavor.Contracts\bin\Debug\netstandard2.0\WorldFavor.Contracts.deps.json
+D:\git\WorldFavor\WorldFavor.Contracts\bin\Debug\netstandard2.0\WorldFavor.Contracts.dll
+D:\git\WorldFavor\WorldFavor.Contracts\bin\Debug\netstandard2.0\WorldFavor.Contracts.pdb
+D:\git\WorldFavor\WorldFavor.Contracts\obj\Debug\netstandard2.0\WorldFavor.Contracts.csprojAssemblyReference.cache
+D:\git\WorldFavor\WorldFavor.Contracts\obj\Debug\netstandard2.0\WorldFavor.Contracts.AssemblyInfoInputs.cache
+D:\git\WorldFavor\WorldFavor.Contracts\obj\Debug\netstandard2.0\WorldFavor.Contracts.AssemblyInfo.cs
+D:\git\WorldFavor\WorldFavor.Contracts\obj\Debug\netstandard2.0\WorldFavor.Contracts.dll
+D:\git\WorldFavor\WorldFavor.Contracts\obj\Debug\netstandard2.0\WorldFavor.Contracts.pdb

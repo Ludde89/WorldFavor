@@ -1,5 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WorldFavor.Contracts.Dtos;
+using WorldFavor.Contracts.Entities;
+using WorldFavor.Persistence.DbContext;
 
 namespace WorldFavor.Controllers
 {
@@ -7,21 +11,49 @@ namespace WorldFavor.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
+        private readonly WorldFavorDbContext _dbContext;
+
+        public BooksController(WorldFavorDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         [HttpGet]
         [Route("{title}")]
         public async Task<ActionResult<Book>> Get(string title)
         {
-            return Ok( new Book(title));
+            var book = await _dbContext.Books
+                .Include(x => x.Reader)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Title == title);
+
+            return Ok(book.Map());
         }
     }
 
-    public class Book
+    public static class BookMapper
     {
-        public string Title { get; }
-
-        public Book(string title)
+        public static Book Map(this BookEntity entity)
         {
-            Title = title;
+            return new Book
+            {
+                Checkout = entity.Checkout,
+                ISBN = entity.ISBN,
+                IsLost = entity.IsLost,
+                Title = entity.Title
+            };
+        }
+    }
+
+    public static class ReaderMapper
+    {
+        public static Reader Map(this ReaderEntity entity)
+        {
+            return new Reader
+            {
+                Name = entity.Name,
+                Birth = entity.Birth
+            };
         }
     }
 }

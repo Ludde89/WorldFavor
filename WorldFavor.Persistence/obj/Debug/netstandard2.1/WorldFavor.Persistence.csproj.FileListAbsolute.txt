@@ -1,0 +1,11 @@
+D:\git\WorldFavor\WorldFavor.Persistence\bin\Debug\netstandard2.1\WorldFavor.Persistence.deps.json
+D:\git\WorldFavor\WorldFavor.Persistence\bin\Debug\netstandard2.1\WorldFavor.Persistence.dll
+D:\git\WorldFavor\WorldFavor.Persistence\obj\Debug\netstandard2.1\WorldFavor.Persistence.csprojAssemblyReference.cache
+D:\git\WorldFavor\WorldFavor.Persistence\obj\Debug\netstandard2.1\WorldFavor.Persistence.AssemblyInfoInputs.cache
+D:\git\WorldFavor\WorldFavor.Persistence\obj\Debug\netstandard2.1\WorldFavor.Persistence.AssemblyInfo.cs
+D:\git\WorldFavor\WorldFavor.Persistence\bin\Debug\netstandard2.1\WorldFavor.Persistence.pdb
+D:\git\WorldFavor\WorldFavor.Persistence\bin\Debug\netstandard2.1\WorldFavor.Contracts.dll
+D:\git\WorldFavor\WorldFavor.Persistence\bin\Debug\netstandard2.1\WorldFavor.Contracts.pdb
+D:\git\WorldFavor\WorldFavor.Persistence\obj\Debug\netstandard2.1\WorldFavor.Persistence.csproj.CopyComplete
+D:\git\WorldFavor\WorldFavor.Persistence\obj\Debug\netstandard2.1\WorldFavor.Persistence.dll
+D:\git\WorldFavor\WorldFavor.Persistence\obj\Debug\netstandard2.1\WorldFavor.Persistence.pdb

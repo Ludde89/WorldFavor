@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldFavor", "WorldFavor\Wo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldFavor.Tests", "WorldFavor.Tests\WorldFavor.Tests.csproj", "{F80181D0-2658-4289-BF28-31D055D8BC34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldFavor.Contracts", "WorldFavor.Contracts\WorldFavor.Contracts.csproj", "{F82F68C2-66AB-41FF-92AC-342804DDB17C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldFavor.Persistence", "WorldFavor.Persistence\WorldFavor.Persistence.csproj", "{93216B8A-E013-41EA-A06F-C20B4E72C49D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F80181D0-2658-4289-BF28-31D055D8BC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F80181D0-2658-4289-BF28-31D055D8BC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F80181D0-2658-4289-BF28-31D055D8BC34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82F68C2-66AB-41FF-92AC-342804DDB17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82F68C2-66AB-41FF-92AC-342804DDB17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82F68C2-66AB-41FF-92AC-342804DDB17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82F68C2-66AB-41FF-92AC-342804DDB17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93216B8A-E013-41EA-A06F-C20B4E72C49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93216B8A-E013-41EA-A06F-C20B4E72C49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93216B8A-E013-41EA-A06F-C20B4E72C49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93216B8A-E013-41EA-A06F-C20B4E72C49D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
