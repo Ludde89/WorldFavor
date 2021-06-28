@@ -32,7 +32,7 @@ namespace WorldFavor.Tests.MockData
             {
                 _readers.AddRange(Enumerable.Range(0, 5).Select(x => new ReaderEntity
                 {
-                    Id = x,
+                    Id = x +1,
                     Name = $"foobar{x}",
                     Birth = DateTime.Now.AddDays(-x)
                 }));

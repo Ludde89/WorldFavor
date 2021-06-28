@@ -8,7 +8,11 @@ namespace WorldFavor.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<ReaderEntity> builder)
         {
-            builder.HasKey(x => x.Name);
+            builder.HasIndex(x => x.Name);
+            builder.HasKey(x => x.Id);
+
+            builder.HasMany(x => x.Books)
+                .WithOne(x => x.Reader);
         }
     }
 }

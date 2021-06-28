@@ -1,4 +1,5 @@
-﻿using WorldFavor.Contracts.Dtos;
+﻿using System.Linq;
+using WorldFavor.Contracts.Dtos;
 using WorldFavor.Contracts.Entities;
 
 namespace WorldFavor.Mappers
@@ -11,7 +12,8 @@ namespace WorldFavor.Mappers
                 ? new Reader
                 {
                     Name = entity.Name,
-                    Birth = entity.Birth
+                    Birth = entity.Birth,
+                    Books = entity.Books?.Select(x => x.Map())
                 }
                 : null;
         }
@@ -22,7 +24,8 @@ namespace WorldFavor.Mappers
                 ? new ReaderEntity
                 {
                     Name = entity.Name,
-                    Birth = entity.Birth
+                    Birth = entity.Birth,
+                    Books = entity.Books?.Select(x => x.Map())
                 }
                 : null;
         }

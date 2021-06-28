@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -12,40 +13,38 @@ using WorldFavor.Persistence.DbContext;
 namespace WorldFavor.Tests.Controllers
 {
     [TestClass]
-    public class When_Post_Book : TestBase
+    public class When_Post_Reader : TestBase
     {
         private HttpResponseMessage _actual;
-        private Book _expectedBook;
+        private Reader _expectedReader;
 
         [TestMethod]
-        public async Task Then_Expected_Books_Should_Be_Created()
+        public async Task Then_Expected_Reader_Should_Be_Created()
         {
             Assert.AreEqual(_actual.StatusCode, HttpStatusCode.Created);
 
             await using var context = new WorldFavorDbContext(ContextOptionsBuilder.Options);
 
-            var actualBook = await context.Books.FirstOrDefaultAsync(x => x.ISBN == _expectedBook.ISBN);
+            var actualReader = await context.Readers.FirstOrDefaultAsync(x => x.Name == _expectedReader.Name && x.Birth == _expectedReader.Birth);
 
-            Assert.AreEqual(_expectedBook.Title, actualBook.Title);
-            Assert.AreEqual(_expectedBook.ISBN, actualBook.ISBN);
-            Assert.AreEqual(_expectedBook.IsLost, actualBook.IsLost);
+            Assert.AreEqual(_expectedReader.Name, actualReader.Name);
+            Assert.AreEqual(_expectedReader.Birth, actualReader.Birth);
         }
 
         protected override async Task Act()
         {
             var client = TestServer.GetTestClient();
-          
-            var searlizedBook = JsonConvert.SerializeObject(_expectedBook);
-            _actual = await client.PostAsync($"/api/books/", new StringContent(searlizedBook, Encoding.UTF8, "application/json"));
+
+            var searlizedReader = JsonConvert.SerializeObject(_expectedReader);
+            _actual = await client.PostAsync($"/api/readers/", new StringContent(searlizedReader, Encoding.UTF8, "application/json"));
         }
 
         protected override void Arrange()
         {
-            _expectedBook = new Book
+            _expectedReader = new Reader
             {
-                ISBN = "foo",
-                IsLost = false,
-                Title = "foobar"
+                Name = "foo",
+                Birth = DateTime.Now
             };
         }
     }
