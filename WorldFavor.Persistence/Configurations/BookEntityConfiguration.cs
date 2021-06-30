@@ -11,7 +11,8 @@ namespace WorldFavor.Persistence.Configurations
             builder
                 .HasOne<ReaderEntity>(x => x.Reader)
                 .WithMany(x => x.Books)
-                .HasForeignKey(x => x.ReaderId);
+                .HasForeignKey(x => x.ReaderId)
+                .IsRequired(false);
 
             builder.HasKey(x => x.ISBN);
 
