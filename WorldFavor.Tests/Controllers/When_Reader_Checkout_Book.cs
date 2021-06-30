@@ -21,7 +21,7 @@ namespace WorldFavor.Tests.Controllers
         private BookEntity _expectedBook;
 
         [TestMethod]
-        public async Task Then_Expected_Reader_Should_Be_Created()
+        public async Task Then_Expected_Book_Should_Be_CheckedOut()
         {
             Assert.AreEqual(HttpStatusCode.OK, _actual.StatusCode);
 
@@ -35,6 +35,9 @@ namespace WorldFavor.Tests.Controllers
             Assert.AreEqual(_expectedReader.Name, actualReader.Name);
             Assert.AreEqual(_expectedReader.Birth, actualReader.Birth);
             Assert.AreEqual(_expectedBook.ISBN, actualReader.Books.First().ISBN);
+            Assert.IsNotNull(actualReader.Books.First().Checkout);
+            Assert.AreEqual(_expectedBook.ISBN, actualReader.Books.First().ISBN);
+            Assert.AreEqual(_expectedBook.Title, actualReader.Books.First().Title);
         }
 
         protected override async Task Act()
